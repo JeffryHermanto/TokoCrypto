@@ -41,7 +41,7 @@
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="http://tokocrypto.com" target="_blank" href="https://twitter.com/intent/tweet?text=TokoCrypto: Situs jual beli 100 Cryptocurrency terpopuler&amp;hashtags=Tokopedia&amp;url=http://tokocrypto.com&amp;via=jeffryhermanto">
+              <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://goo.gl/nm8kyL" target="_blank" href="https://twitter.com/intent/tweet?text=TokoCrypto: Simulasi trading 100 Cryptocurrency terpopuler&amp;hashtags=Tokopedia&amp;url=https://goo.gl/nm8kyL&amp;via=jeffryhermanto">
                   <span class="icon">
                     <i class="fab fa-twitter"></i>
                   </span>
@@ -51,7 +51,7 @@
                 </a>
             </p>
             <p class="control">
-              <a class="button is-primary" href="https://github.com/jeffryhermanto" target="_blank">
+              <a class="button is-primary" href="https://github.com/JeffryHermanto/TokoCrypto" target="_blank">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
