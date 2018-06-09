@@ -19,7 +19,7 @@
             <router-link to="aset">Aset Saya</router-link>
           </a>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="/documentation/overview/start/">
+          <a class="navbar-link" href="#">
               Referensi
             </a>
           <div class="navbar-dropdown is-boxed">
