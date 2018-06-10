@@ -2,9 +2,9 @@
   <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
-        <img id="avatar" src="../assets/profile.jpg" alt="Avatar" width="100px">
+        <img id="avatar" src="../assets/userAvatar.svg" alt="Avatar" width="100px">
         <h1 class="title is-size-4">
-          Selamat datang, {{ nama }}!
+          Simulasi Trading Cryptocurrency
         </h1>
         <h2 class="subtitle">
           Saldo: <span>Rp. {{ formatPrice(saldo) }},-</span>

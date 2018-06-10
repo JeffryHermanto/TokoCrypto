@@ -8,7 +8,8 @@ export default new Vuex.Store({
     nama: 'Jeffry',
     saldo: 10000000,
     listing: [],
-    coins: []
+    coins: [],
+    coinsFilled: true
   },
   getters: {
     listing: state => {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     coins: state => {
       return state.coins
+    },
+    coinsFilled: state => {
+      return state.coinsFilled
     }
   },
   mutations: {

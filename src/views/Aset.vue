@@ -2,49 +2,71 @@
   <div class="aset">
     <div class="container">
       <h1 class="title">Aset Saya</h1>
+      <p v-if="coinsFilled">
+        Anda belum memiliki Cryptocurrency.<br />
+        Silahkan analisa dan beli terlebih dahulu untuk menambah koleksi pertama Anda.
+      </p>
       <!-- BOX -->
-      <div class="box" v-for="(coin, index) in coins" :key="index">
-        <article class="media">
-          <div class="media-left">
-            <h1 class="title">{{ coin.symbol }}</h1>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p><strong>{{ coin.name }}</strong></p>
-              <p>Harga saat ini: <br /><strong>Rp. {{ formatPrice(arrayPosition(coin.id)) }},-</strong></p>
-              <div class="field is-grouped is-grouped-multiline">
-                <div class="control">
-                  <div class="tags has-addons">
-                    <span class="tag is-dark">Tanggal Beli</span>
-                    <span class="tag is-info">{{ formatDate(coin.buyDate) }}</span>
-                  </div>
-                </div>
-                <div class="control">
-                  <div class="tags has-addons">
-                    <span class="tag is-dark">Beli Di Harga Satuan</span>
-                    <span class="tag is-success">Rp. {{ formatPrice(coin.buyPrice) }},-</span>
-                  </div>
-                </div>
-                <div class="control">
-                  <div class="tags has-addons">
-                    <span class="tag is-dark">Jumlah Stok</span>
-                    <span class="tag is-primary">{{ coin.coinStock }}</span>
-                  </div>
-                </div>
+      <div class="columns is-multiline">
+        <div class="column is-one-third" v-for="(coin, index) in coins" :key="index">
+          <div class="box">
+            <article class="media">
+              <div class="media-left">
+                <h1 class="title">{{ coin.symbol }}</h1>
               </div>
-            </div>
+              <div class="media-content">
+                <div class="content">
+                  <p><strong>{{ coin.name }}</strong></p>
+                  <p>Harga saat ini: <strong>Rp. {{ formatPrice(arrayPosition(coin.id)) }},-</strong></p>
+                  <div class="field is-grouped is-grouped-multiline">
+                    <div class="control">
+                      <div class="tags has-addons">
+                        <span class="tag is-dark">Tanggal Beli</span>
+                        <span class="tag is-info">{{ formatDate(coin.buyDate) }}</span>
+                      </div>
+                    </div>
+                    <div class="control">
+                      <div class="tags has-addons">
+                        <span class="tag is-dark">Beli Di Harga Satuan</span>
+                        <span class="tag is-success">Rp. {{ formatPrice(coin.buyPrice) }},-</span>
+                      </div>
+                    </div>
+                    <div class="control">
+                      <div class="tags has-addons">
+                        <span class="tag is-dark">Jumlah Stok</span>
+                        <span class="tag is-primary">{{ coin.coinStock }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div v-if="profitLossPercentage(coin.id, coin.buyPrice) == 0" class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-large"><small>P/L: <span>{{ profitLossPercentage(coin.id, coin.buyPrice) }} %</span></small></span>
+                    <a class="tag is-warning is-large" @click="formulirJual(coin)">Jual</a>
+                  </div>
+                </div>
+
+                <div v-else-if="profitLossPercentage(coin.id, coin.buyPrice) > 0" class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-success is-large"><small>P/L: <span>{{ profitLossPercentage(coin.id, coin.buyPrice) }} %</span></small></span>
+                    <a class="tag is-warning is-large" @click="formulirJual(coin)">Jual</a>
+                  </div>
+                </div>
+
+                <div v-else-if="profitLossPercentage(coin.id, coin.buyPrice) < 0" class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-danger is-large"><small>P/L: <span>{{ profitLossPercentage(coin.id, coin.buyPrice) }} %</span></small></span>
+                    <a class="tag is-warning is-large" @click="formulirJual(coin)">Jual</a>
+                  </div>
+                </div>
+
+              </div>
+            </article>
           </div>
-          <div class="media-right">
-            <a class="button is-warning jual" v-on:click="formulirJual(coin)">Jual</a>
-            <div :class="profitLoss">
-              <small>P/L: <span>{{ profitLossPercentage(coin.id, coin.buyPrice) }} %</span></small>
-            </div>
-          </div>
-        </article>
+        </div>
       </div>
       <!-- AKHIR BOX -->
-
-      <br />
 
       <!-- KONFIRMASI TUTUP POSISI -->
       <div :class="isOrdered">
@@ -66,18 +88,18 @@
       <!-- AKHIR KONFIRMASI TUTUP POSISI -->
 
       <!-- SUKSES JUAL -->
-          <div :class="suksesJual">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-              <i class="fas fa-check fa-10x suksesJual"></i>
-              <div class="successNotes">
-                <h1 class="title">Selamat!</h1>
-                <h2 class="subtitle">Posisi Anda Sudah Terjual</h2>
-              </div>
-              <router-link to="/" class="button is-info tombolAset">Kembali ke Beranda</router-link>
-            </div>
-            <button class="modal-close is-large" aria-label="close" @click="closeSuksesJual()"></button>
+      <div :class="suksesJual">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <i class="fas fa-check fa-10x suksesJual"></i>
+          <div class="successNotes">
+            <h1 class="title">Selamat!</h1>
+            <h2 class="subtitle">Posisi Anda Sudah Terjual</h2>
           </div>
+          <router-link to="/" class="button is-info tombolAset">Kembali ke Beranda</router-link>
+        </div>
+        <button class="modal-close is-large" aria-label="close" @click="closeSuksesJual()"></button>
+      </div>
       <!-- AKHIR SUKSES JUAL -->
 
     </div>
@@ -92,7 +114,7 @@
 
   export default {
     computed: mapGetters([
-      'coins', 'listing'
+      'coins', 'listing', 'coinsFilled'
     ]),
     data() {
       return {
@@ -135,26 +157,26 @@
         }
         return hasil
       },
-      formulirJual (coin) {
+      formulirJual(coin) {
         this.isOrdered = 'modal is-active',
-        this.id = coin.id,
-        this.elementPos = this.elementPosition(coin.id)
+          this.id = coin.id,
+          this.elementPos = this.elementPosition(coin.id)
         this.name = coin.name,
-        this.symbol = coin.symbol,
-        this.price = coin.buyPrice
+          this.symbol = coin.symbol,
+          this.price = coin.buyPrice
         this.nilaiJual = this.arrayPosition(coin.id) * coin.coinStock
         console.log(this.elementPos)
       },
       cancelOrder() {
         this.isOrdered = 'modal'
       },
-      jual () {
+      jual() {
         this.$store.state.saldo = this.$store.state.saldo + this.nilaiJual
         this.$store.state.coins.splice(this.elementPos, 1)
         this.isOrdered = 'modal'
         this.suksesJual = 'modal is-active'
       },
-      closeSuksesJual () {
+      closeSuksesJual() {
         this.suksesJual = "modal"
       }
     }
@@ -169,33 +191,6 @@
   .jual {
     width: 100px;
     font-weight: bold
-  }
-
-  .profitLossNetral {
-    margin-top: 10px;
-    color: #fff;
-    background-color: #999;
-    border-radius: 4px;
-    width: 100px;
-    text-align: center
-  }
-
-  .profitBox {
-    margin-top: 10px;
-    color: #fff;
-    background-color: green;
-    border-radius: 4px;
-    width: 100px;
-    text-align: center
-  }
-
-  .lossBox {
-    margin-top: 10px;
-    color: #fff;
-    background-color: red;
-    border-radius: 4px;
-    width: 100px;
-    text-align: center
   }
 
   small span {

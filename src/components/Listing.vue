@@ -215,6 +215,7 @@
           coinStock: this.jumlah,
           buyDate: timeStamp
         })
+        this.$store.state.coinsFilled = false
         this.isOrdered = 'modal'
         this.orderSuccess = 'modal is-active'
       },
