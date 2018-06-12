@@ -53,7 +53,7 @@
               </span>
             </p>
             <p class="control is-expanded">
-              <input class="input" type="text" placeholder="Jumlah" v-model="jumlah">
+              <input class="input" type="number" min="0" placeholder="Jumlah" v-model="jumlah">
             </p>
             <p class="control">
               <a class="button is-info" @click="hitung()">

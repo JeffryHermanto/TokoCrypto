@@ -78,7 +78,7 @@
           </header>
           <section class="modal-card-body">
             <h1 class="title">{{ name }} ({{ symbol }})</h1>
-            <h2 class="subtitle">Yakin mau jual?</h2>
+            <h2 class="subtitle">Yakin mau dijual?</h2>
           </section>
           <footer class="modal-card-foot">
             <a class="button is-danger is-large tombolJual" @click="jual()">Jual</a>
