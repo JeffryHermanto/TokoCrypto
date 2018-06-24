@@ -4,13 +4,7 @@
 
 **Visit Project at [https://goo.gl/nm8kyL](https://brave-montalcini-3cbdab.netlify.com/)**
 
-![TokoCrypto1](http://jhproject.id/img/portfolio/TokoCrypto1.png)
-
-![TokoCrypto1](http://jhproject.id/img/portfolio/TokoCrypto2.png)
-
-![TokoCrypto1](http://jhproject.id/img/portfolio/TokoCrypto3.png)
-
-![TokoCrypto1](http://jhproject.id/img/portfolio/TokoCrypto4.png)
+![TokoCrypto1](http://jhproject.id/images/portfolio/TokoCrypto.png)
 
 #### Jeffry Hermanto _jeffryhermanto@gmail.com_
 
