@@ -2,9 +2,9 @@
 
 > Cryptocurrency Trading Simulation.
 
-**Visit Project at [https://goo.gl/nm8kyL](https://brave-montalcini-3cbdab.netlify.com/)**
+**[Visit Project](https://brave-montalcini-3cbdab.netlify.com)**
 
-![TokoCrypto1](http://jhproject.id/images/portfolio/TokoCrypto.png)
+![screenshot](screenshot.png)
 
 #### Jeffry Hermanto _jeffryhermanto@gmail.com_
 
